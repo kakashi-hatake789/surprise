@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reasons Why I Like You</title>
+  
+  <!-- Dancing Script font for ending text -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 50%, #ffd1dc 75%, #ffe4ec 100%);
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.6;
+      z-index: -1;
+    }
+    body::before {
+      width: 400px;
+      height: 400px;
+      background: #ff8aa4;
+      top: 20%;
+      left: 10%;
+    }
+    body::after {
+      width: 500px;
+      height: 500px;
+      background: #ffb6b9;
+      top: 60%;
+      right: 10%;
+    }
+
+    .container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #c9184a;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.8rem;
+      text-shadow: 0 0 10px #ff9eb1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      font-size: 18px;
+      color: #d6336c;
+
+      border: 2px solid rgba(217, 51, 108, 0.6);
+      box-shadow: 0 0 12px rgba(217, 51, 108, 0.8),
+                  0 0 30px rgba(255, 105, 180, 0.6);
+
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(217, 51, 108, 1),
+                  0 0 40px rgba(255, 105, 180, 0.8);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .petal {
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Heart burst animation */
+    @keyframes heartRise {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Ending text style */
+    .ending-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #c9184a;
+      text-align: center;
+      margin: 50px 20px 80px 20px;
+      text-shadow: 0 0 8px #ff9eb1;
+      user-select: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+      .card {
+        font-size: 16px;
+        margin: 12px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        font-size: 14px;
+        margin: 10px;
+        padding: 12px;
+      }
+    }
+    .hi{
+        font-size: 15px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body onclick="handleClick(event)">
+    <div class="hi">click on screen please 🥺</div>
+  <audio id="bgMusic" src="music-6.mp3" loop></audio>
+
+  <div class="container">
+    <h1>30 Reasons Why I Like You 💖</h1>
+    <script>
+      const reasons = [
+        "Your smile brightens my day 🥰 - whenever I see you I lose myself in thoughts with you.",
+        "Your kindness inspires me.🫠",
+        "You listen to me with genuine interest.😳",
+        "You have the most beautiful eyes🤗 - in which I am lost.",
+        "You bring out the best in me.",
+        "The way you care for others.☺️",
+        "You make my ordinary moments special.😌",
+        "You're a great cook.🍳",
+        "Your way of talking.😊",
+        "You're an amazing listener.🎧",
+        "Your positive attitude.😇",
+        "Your personality.🦁",
+        "You share your personal things with me.",
+        "Your height.👍",
+        "Your thoughts about cricket.🏏",
+        "You're caring.😗",
+        "You're my reason to smile.😊",
+        "Your cuteness.😍",
+        "Your loving nature.😉",
+        "Your thoughtfulness.🫠",
+        "Your dedication towards study.👌",
+        "Your traditional look.🥰",
+
+        "Your voice.💎",
+        "Your maturity.",
+        "Your laugh.😁",
+        "Your non-judging attitude.😉",
+        "Your uniqueness.🫡",
+        "Your hard work.⚓",
+        "Your love towards family.❣️",
+        "You're my perfect match.💘"
+      ];
+
+      const container = document.querySelector(".container");
+      reasons.forEach((reason, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = `${index + 1}. ${reason}`;
+        container.appendChild(card);
+      });
+    </script>
+
+    <div class="ending-text">
+      Khushi ji, I hope 😅 gift acha laga hoga
+    </div>
+  </div>
+
+  <script>
+    // Falling petals
+    const totalPetals = 30;
+    for (let i = 0; i < totalPetals; i++) {
+      let petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.innerHTML = "🌸";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.top = "-30px"; // start slightly above viewport top
+      petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+      petal.style.animationDelay = Math.random() * 5 + "s";
+      document.body.appendChild(petal);
+    }
+
+    // Music play on first click
+    function playMusic() {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) {
+        music.play();
+      }
+    }
+
+    // Scroll fade & zoom animation for cards
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, 
+      { threshold: 0.1 }
+    );
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+
+    // Heart burst animation on click
+    function createHeartBurst(x, y) {
+      const heartCount = 8;
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+        heart.style.pointerEvents = 'none';
+        heart.style.userSelect = 'none';
+        heart.style.zIndex = 1000;
+        heart.style.opacity = '1';
+        heart.style.transform = `translate(0, 0) rotate(0deg)`;
+        heart.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+
+        document.body.appendChild(heart);
+
+        // random direction for each heart
+        const angle = (Math.PI * 2 / heartCount) * i;
+        const distance = 50 + Math.random() * 50;
+
+        setTimeout(() => {
+          heart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance - 80}px) rotate(${Math.random() * 720}deg) scale(1.5)`;
+          heart.style.opacity = '0';
+        }, 10);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1100);
+      }
+    }
+
+    function handleClick(e) {
+      playMusic();
+      createHeartBurst(e.clientX, e.clientY);
+    }
+  </script>
+</body>
+</html>
+
+

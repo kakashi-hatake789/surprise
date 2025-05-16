@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Night Sky for Khushi ji</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #020111 0%, #000010 40%, #000033 70%, #001144 100%);
+      font-family: 'Georgia', serif;
+    }
+
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow:
+        5vw 10vh white,
+        12vw 18vh white,
+        20vw 12vh white,
+        30vw 24vh white,
+        40vw 14vh white,
+        50vw 6vh white,
+        60vw 11vh white,
+        70vw 4vh white,
+        80vw 22vh white;
+      animation: twinkle 2s infinite alternate;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    .moon {
+      width: 20vw;
+      height: 20vw;
+      background: #ddd;
+      border-radius: 50%;
+      position: absolute;
+      top: 8vh;
+      left: 70vw;
+      box-shadow:
+        -3vw 0 0 0 #020111,
+        0 0 3vw 1vw rgba(255, 255, 255, 0.3),
+        0 0 6vw 2vw rgba(255, 255, 255, 0.15);
+      animation: moonGlow 5s ease-in-out infinite;
+    }
+
+    @keyframes moonGlow {
+      0% {
+        box-shadow: -3vw 0 0 0 #020111,
+                    0 0 3vw 1vw rgba(255,255,255,0.3),
+                    0 0 6vw 2vw rgba(255,255,255,0.15);
+      }
+      50% {
+        box-shadow: -3vw 0 0 0 #020111,
+                    0 0 4vw 1.5vw rgba(255,255,255,0.4),
+                    0 0 8vw 2.5vw rgba(255,255,255,0.2);
+      }
+      100% {
+        box-shadow: -3vw 0 0 0 #020111,
+                    0 0 3vw 1vw rgba(255,255,255,0.3),
+                    0 0 6vw 2vw rgba(255,255,255,0.15);
+      }
+    }
+
+    .shooting-star {
+      width: 1px;
+      height: 10vh;
+      background: linear-gradient(white, transparent);
+      position: absolute;
+      top: -10vh;
+      right: 0;
+      transform: rotate(-135deg);
+      animation: shoot-left-down 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    .shooting-star:nth-child(4) {
+      animation-delay: 1s;
+      top: -15vh;
+      right: 20vw;
+    }
+
+    .shooting-star:nth-child(5) {
+      animation-delay: 2.5s;
+      top: -25vh;
+      right: 40vw;
+    }
+
+    @keyframes shoot-left-down {
+      0% {
+        transform: translate(0, 0) rotate(-135deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-80vw, 80vh) rotate(-135deg);
+        opacity: 0;
+      }
+    }
+
+    .cloud {
+      position: absolute;
+      top: 20vh;
+      left: -60vw;
+      background: #d0d0d030;
+      width: 80vw;
+      height: 20vh;
+      border-radius: 50%;
+      filter: blur(20px);
+      animation: floatClouds 50s linear infinite;
+    }
+
+    .cloud:nth-child(6) {
+      top: 30vh;
+      animation-delay: 10s;
+      opacity: 0.6;
+    }
+
+    .cloud:nth-child(7) {
+      top: 40vh;
+      animation-delay: 20s;
+      opacity: 0.5;
+    }
+
+    @keyframes floatClouds {
+      0% { left: -80vw; }
+      100% { left: 100vw; }
+    }
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5vw;
+      color: #ffffffcc;
+      text-align: center;
+      text-shadow: 0 0 10px #ffffffaa, 0 0 20px #ffffff66;
+      animation: fadeIn 3s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      100% { opacity: 1; transform: translate(-50%, -50%); }
+    }
+    .center-button {
+  position: absolute;
+  top: 75%; /* Pehle 60% tha */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.center-button button {
+  padding: 10px 20px;
+  font-size: 4vw;
+  border: none;
+  border-radius: 30px;
+  background: #ffffff22;
+  color: #fff;
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ffffff55, 0 0 20px #ffffff33;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.center-button button:hover {
+  background: #ffffff44;
+  box-shadow: 0 0 15px #ffffffaa, 0 0 30px #ffffff55;
+}
+.small{
+    color: #fff;
+    font-size: 20px;
+}
+.petal {
+    position: fixed;
+    top: -10px;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://pngimg.com/uploads/sakura/sakura_PNG58.png');
+    background-size: cover;
+    pointer-events: none;
+    opacity: 0.8;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="small">click anywhere on screen 😗</div>
+
+  <!-- Message for Khushi ji -->
+  <div class="center-text">Hi, Khushi ji! Here is something for you 😙</div>
+  <div class="center-button">
+  <button onclick="window.location.href='k.html'">Click Here</button>
+</div>
+
+  <audio id="bg-music" loop>
+    <source src="music-2.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+  const bgMusic = document.getElementById("bg-music");
+
+  const startMusic = () => {
+    bgMusic.play().catch(e => console.log("Autoplay blocked:", e));
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("scroll", startMusic);
+  };
+
+  document.addEventListener("click", startMusic);
+  document.addEventListener("scroll", startMusic);
+  
+  
+</script>
+
+</body>
+</html
+
